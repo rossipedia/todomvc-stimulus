@@ -1,0 +1,24 @@
+{
+  "name": "todo-stim",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-serve"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.2",
+    "@types/webpack": "^4.4.5",
+    "@types/webpack-env": "^1.13.6",
+    "copy-webpack-plugin": "^4.5.2",
+    "html-webpack-include-assets-plugin": "^1.0.4",
+    "html-webpack-plugin": "^3.2.0",
+    "stimulus": "^1.0.1",
+    "todomvc-app-css": "^2.1.2",
+    "ts-loader": "^4.4.2",
+    "typescript": "^2.9.2",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-serve": "^1.0.4"
+  }
+}

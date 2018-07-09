@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Template • TodoMVC</title>
+        <!-- CSS overrides - remove if you don't need it -->
+    </head>
+
+    <body>
+        <section class="todoapp" data-controller="todo">
+
+            <header class="header">
+                <h1>todos</h1>
+                <input class="new-todo" placeholder="What needs to be done?" autofocus data-action="keydown->todo#newTodoKeydown" data-target="todo.newTodo">
+            </header>
+
+            <!-- This section should be hidden by default and shown when there are todos -->
+            <section class="main">
+                <input id="toggle-all" class="toggle-all" type="checkbox" data-action="todo#toggleAll">
+                <label for="toggle-all">Mark all as complete</label>
+
+                <!-- The TODO Item Template. This will be used to add new todo items to the list -->
+                <template data-target="todo.itemTemplate">
+                    <li data-controller="todoitem" data-action="itemchanged->todo#updateCount">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" data-target="todoitem.completed" data-action="todoitem#toggleCompleted">
+                            <label data-target="todoitem.valueLabel" data-action="dblclick->todoitem#edit"></label>
+                            <button class="destroy" data-action="todoitem#destroy"></button>
+                        </div>
+                        <input data-target="todoitem.valueEditor" class="edit" value="" data-action="blur->todoitem#unedit">
+                    </li>
+                </template>
+
+                <!-- The container element for TODO items -->
+                <ul class="todo-list" data-target="todo.items" data-action="itemdestroyed->todo#updateCount">
+                </ul>
+            </section>
+
+
+            <!-- This footer should hidden by default and shown when there are todos -->
+            <footer class="footer" data-target="todo.footer">
+                <!-- This should be `0 items left` by default -->
+                <span class="todo-count">
+                    <strong data-target="todo.activeCount">0</strong> item<span data-target="todo.activeCountPluralize"></span> left
+                </span>
+                <!-- Remove this if you don't implement routing -->
+                <ul class="filters" data-target="todo.filters">
+                    <li>
+                        <a href="#/">All</a>
+                    </li>
+                    <li>
+                        <a href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a href="#/completed">Completed</a>
+                    </li>
+                </ul>
+                <!-- Hidden if no completed items are left ↓ -->
+                <button class="clear-completed" data-action="todo#clearCompleted">Clear completed</button>
+            </footer>
+
+        </section>
+        <footer class="info">
+            <p>Double-click to edit a todo</p>
+        </footer>
+    </body>
+
+</html>
